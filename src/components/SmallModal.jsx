@@ -44,7 +44,7 @@ function Window({ children, name }) {
     <OverLay>
       <SmallModalContainer>
         <div className="flex justify-end mb-3">
-          <IoMdClose className="text-3xl cursor-pointer" onClick={close} />
+          <IoMdClose className="text-2xl cursor-pointer" onClick={close} />
         </div>
         {children}
       </SmallModalContainer>
