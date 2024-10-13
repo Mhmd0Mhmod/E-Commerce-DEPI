@@ -1,0 +1,29 @@
+import HomeCategries from "../components/HomeCategries";
+import HomeHeader from "../components/HomeHeader";
+import HomeProductOnSale from "../components/HomeProductOnSale";
+import HomeSection from "../components/HomeSection";
+import NewProducts from "../components/NewProducts";
+import SmartWatchSection from "../components/SmartWatchSection";
+import TopBrands from "../components/TopBrands";
+
+function Home() {
+  return (
+    <div className="max-w-7xl mx-auto  space-y-12 px-4 mb-16">
+      <HomeHeader />
+      <HomeCategries />
+      <HomeProductOnSale />
+      <HomeSection label="New Products">
+        <NewProducts />
+      </HomeSection>
+      <HomeSection label="Best Sellers">
+        <NewProducts />
+      </HomeSection>
+      <HomeSection label="Top Brands">
+        <TopBrands />
+      </HomeSection>
+      <SmartWatchSection />
+    </div>
+  );
+}
+
+export default Home;
