@@ -1,4 +1,9 @@
+import { useLocation } from 'react-router-dom';
+
 function Account() {
-    return <></>;
+  const location = useLocation();
+  console.log(location);
+
+  return <div></div>;
 }
 export default Account;

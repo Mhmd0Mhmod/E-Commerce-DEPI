@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import AppLayout from './ui/AppLayout';
 import Home from './Pages/Home';
 import Account from './Pages/Account';
@@ -7,7 +7,8 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route element={<AppLayout />}>
-          <Route index element={<Home />} />
+          <Route index element={<Navigate replace to={'home'} />} />
+          <Route index path="home" element={<Home />} />
           <Route path="account" element={<Account />}>
             <Route index element={<div>Personal Data</div>} />
             <Route path="orders" element={<div>Orders</div>} />
