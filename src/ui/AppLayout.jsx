@@ -6,7 +6,7 @@ function AppLayout() {
   return (
     <div className="overflow-x-hidden">
       <Header />
-      <main>
+      <main className="max-w-7xl mx-auto  space-y-12 px-4 mb-16">
         <Outlet />
       </main>
       <Footer />
