@@ -2,7 +2,7 @@ import { IoIosSearch } from "react-icons/io";
 
 function SearchBar() {
   return (
-    <div className=" flex justify-between border-black border p-4 rounded-lg  ">
+    <div className=" flex justify-between border-black border p-4 rounded-lg   ">
       <input
         className="placeholder:text-[#444444] focus:outline-none"
         type="text"
