@@ -5,6 +5,7 @@ import Account from './Pages/Account';
 import PersonalData from './Pages/PersonalData';
 import Orders from './Pages/Orders';
 import AccountSecurity from './Pages/AccountSecurity';
+import WishList from './components/WishList';
 function App() {
   return (
     <BrowserRouter>
@@ -16,7 +17,7 @@ function App() {
             <Route index element={<Navigate replace to={'personalData'} />} />
             <Route path="personalData" element={<PersonalData />} />
             <Route path="orders" element={<Orders />} />
-            <Route path="wishlist" element={<div>wishlist</div>} />
+            <Route path="wishlist" element={<WishList />} />
             <Route path="security" element={<AccountSecurity />} />
             <Route path="contactus" element={<div>Contact Us</div>} />
             <Route path="*" element={<div>Not Found</div>} />
