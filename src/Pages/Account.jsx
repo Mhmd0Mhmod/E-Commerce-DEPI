@@ -7,7 +7,7 @@ function Account() {
     <div className="p-4 space-y-4 min-h-[90lvh]">
       <Breadcrumb />
       <main className="flex gap-5  ">
-        <AccountAside className />
+        <AccountAside />
         <main className="flex-grow">
           <Outlet />
         </main>
