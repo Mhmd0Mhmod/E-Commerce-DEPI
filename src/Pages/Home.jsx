@@ -8,7 +8,7 @@ import TopBrands from '../components/TopBrands';
 
 function Home() {
   return (
-    <div className="">
+    <div className="space-y-6">
       <HomeHeader />
       <HomeCategries />
       <HomeProductOnSale />

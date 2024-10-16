@@ -1,17 +1,17 @@
-import CounterItem from "./CounterItem";
+import CounterItem from './CounterItem';
 
-function CartItem({ image }) {
+function CartItem({ product }) {
   return (
     <li className="flex  p-3 shadow-sm  shadow-gray-717171">
       <div className="w-1/2 flex justify-center items-center">
-        <img className="w-1/2" src={image} alt={`${image}`} />
+        <img className="w-1/2" src={product.image} alt={`${product.image}`} />
       </div>
       <div className="w-1/2 space-y-6">
-        <h3 className="font-medium">MacBook Pro M2 MNEJ3 2022 LLA 13.3 inch</h3>
-        <p className="text-sm text-gray-717171">×1</p>
+        <h3 className="font-medium">{product.title}</h3>
+        <p className="text-sm text-gray-717171">×{product.quantity}</p>
         <div className="flex items-center justify-between">
-          <span className="text-gray-2D2D2D font-light">$433.00</span>
-          <CounterItem />
+          <span className="text-gray-2D2D2D font-light">${product.totalPrice}</span>
+          <CounterItem count={product.quantity} />
         </div>
       </div>
     </li>

@@ -1,8 +1,8 @@
-import { FiPlus } from "react-icons/fi";
-import { GoDash } from "react-icons/go";
-import { MdDeleteForever } from "react-icons/md";
+import { FiPlus } from 'react-icons/fi';
+import { GoDash } from 'react-icons/go';
+import { MdDeleteForever } from 'react-icons/md';
 
-function CounterItem() {
+function CounterItem({ count }) {
   return (
     <div className="flex items-center gap-2 ">
       <MdDeleteForever className="text-status-error text-2xl" />
@@ -10,7 +10,7 @@ function CounterItem() {
         <button>
           <GoDash className="text-xl" />
         </button>
-        <span className="font-bold">5</span>
+        <span className="font-bold">{count}</span>
         <button>
           <FiPlus className="text-xl" />
         </button>

@@ -5,6 +5,9 @@ import Account from './Pages/Account';
 import PersonalData from './Pages/PersonalData';
 import Orders from './Pages/Orders';
 import AccountSecurity from './Pages/AccountSecurity';
+import Products from './components/Products';
+import Cart from './components/Cart';
+import ProductDetails from './components/ProductDetails';
 function App() {
   return (
     <BrowserRouter>
@@ -21,6 +24,9 @@ function App() {
             <Route path="contactus" element={<div>Contact Us</div>} />
             <Route path="*" element={<div>Not Found</div>} />
           </Route>
+          <Route path="products" element={<Products />} />
+          <Route path="cart" element={<Cart />} />
+          <Route path="/products/:id" element={<ProductDetails />} />
         </Route>
         <Route path="*" element={<div>Not Found</div>} />
       </Routes>

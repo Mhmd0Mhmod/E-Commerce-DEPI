@@ -4,7 +4,7 @@ import Header from '../components/Header';
 
 function AppLayout() {
   return (
-    <div className="overflow-x-hidden">
+    <div className="h-dvh overflow-x-hidden grid grid-rows-[auto_1fr_auto] ">
       <Header />
       <main className="max-w-7xl mx-auto  space-y-12 px-4 mb-16">
         <Outlet />

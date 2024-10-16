@@ -1,14 +1,11 @@
-import CartItem from "./CartItem";
+import CartItem from './CartItem';
 
-function ContainerCartItems() {
+function ContainerCartItems({ cart }) {
   return (
     <ul className="overflow-y-scroll  max-h-[350px] space-y-6 ">
-      <CartItem image={"../../public/CategriesPhotos/gaming.png"} />
-      <CartItem image={"../../public/CategriesPhotos/gaming.png"} />
-      <CartItem image={"../../public/CategriesPhotos/gaming.png"} />
-      <CartItem image={"../../public/CategriesPhotos/gaming.png"} />
-      <CartItem image={"../../public/CategriesPhotos/gaming.png"} />
-      <CartItem image={"../../public/CategriesPhotos/gaming.png"} />
+      {cart.map((product) => (
+        <CartItem key={product.id} product={product} image={'../../public/CategriesPhotos/gaming.png'} />
+      ))}
     </ul>
   );
 }
