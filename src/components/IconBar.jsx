@@ -5,6 +5,7 @@ import Modal from "./Modal";
 import SearchBar from "./SearchBar";
 import SmallModal from "./SmallModal";
 import ProfileMenu from "./ProfileMenu";
+import CartContainer from "./CartContainer";
 
 function IconBar() {
   return (
@@ -22,18 +23,25 @@ function IconBar() {
         </Modal.Window>
       </Modal>
       <SmallModal>
-        <SmallModal.Open opens="profile menu">
+        <SmallModal.Open opens="cart">
           <li className="cursor-pointer">
             <RiShoppingCart2Line />
+          </li>
+        </SmallModal.Open>
+        <SmallModal.Window name="cart">
+          <CartContainer />
+        </SmallModal.Window>
+      </SmallModal>
+      <SmallModal>
+        <SmallModal.Open opens="profile menu">
+          <li className="cursor-pointer">
+            <FaRegUser />
           </li>
         </SmallModal.Open>
         <SmallModal.Window name="profile menu">
           <ProfileMenu />
         </SmallModal.Window>
       </SmallModal>
-      <li className="cursor-pointer">
-        <FaRegUser />
-      </li>
     </ul>
   );
 }
