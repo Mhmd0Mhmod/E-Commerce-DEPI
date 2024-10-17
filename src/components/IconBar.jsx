@@ -1,11 +1,14 @@
-import { FaRegUser } from "react-icons/fa";
-import { IoIosSearch } from "react-icons/io";
-import { RiShoppingCart2Line } from "react-icons/ri";
-import Modal from "./Modal";
-import SearchBar from "./SearchBar";
-import SmallModal from "./SmallModal";
-import ProfileMenu from "./ProfileMenu";
-import CartContainer from "./CartContainer";
+import { FaRegUser } from 'react-icons/fa';
+import { IoIosSearch } from 'react-icons/io';
+import { RiShoppingCart2Line } from 'react-icons/ri';
+import Modal from './Modal';
+import SearchBar from './SearchBar';
+import SmallModal from './SmallModal';
+import ProfileMenu from './ProfileMenu';
+import CartContainer from './CartContainer';
+import Button from './Button';
+import LoginSignContainer from './LoginSignContainer';
+import { IoLogOutOutline } from 'react-icons/io5';
 
 function IconBar() {
   return (
@@ -31,8 +34,7 @@ function IconBar() {
         <SmallModal.Window name="cart">
           <CartContainer />
         </SmallModal.Window>
-      </SmallModal>
-      <SmallModal>
+
         <SmallModal.Open opens="profile menu">
           <li className="cursor-pointer">
             <FaRegUser />
@@ -42,6 +44,17 @@ function IconBar() {
           <ProfileMenu />
         </SmallModal.Window>
       </SmallModal>
+      <Modal>
+        <Modal.Open opens="loginForm">
+          <Button className={'bg-primary-main px-4 py-2 flex justify-center items-center text-white cursor-pointer rounded-lg'}>
+            {' '}
+            <IoLogOutOutline /> log in{' '}
+          </Button>
+        </Modal.Open>
+        <Modal.Window name="loginForm">
+          <LoginSignContainer />
+        </Modal.Window>
+      </Modal>
     </ul>
   );
 }
