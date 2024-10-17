@@ -25,7 +25,7 @@ function ProductsContainer() {
 
   // const filterValue
   return (
-    <div className="grid grid-cols-4">
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4">
       {filterProducts.map((product) => (
         <ItemProduct key={product['_id']} product={product} />
       ))}

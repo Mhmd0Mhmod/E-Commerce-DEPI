@@ -46,7 +46,7 @@ function IconBar() {
       </SmallModal>
       <Modal>
         <Modal.Open opens="loginForm">
-          <Button className={'bg-primary-main px-4 py-2 flex justify-center items-center text-white cursor-pointer rounded-lg'}>
+          <Button className={'bg-primary-main px-4 py-2 hidden justify-center items-center text-white cursor-pointer rounded-lg md:flex'}>
             {' '}
             <IoLogOutOutline /> log in{' '}
           </Button>
