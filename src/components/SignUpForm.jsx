@@ -29,7 +29,7 @@ function SignUpForm({ hidden }) {
         <Input
           icon={<FaRegUser className="text-2xl text-gray-717171" />}
           placeholder="Full name"
-          register={register('fullName', {
+          register={register('name', {
             required: 'this field is required',
           })}
           error={errors?.fullName?.message}

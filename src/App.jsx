@@ -32,6 +32,8 @@ function App() {
               <Route element={<AppLayout />}>
                 <Route index element={<Navigate replace to={'home'} />} />
                 <Route index path="home" element={<Home />} />
+                <Route path="products" element={<Products />} />
+                <Route path="/products/:id" element={<ProductDetails />} />
                 <Route index path="cart" element={<Cart />} />
                 <Route path="account" element={<Account />}>
                   <Route index element={<Navigate replace to={'personalData'} />} />
@@ -42,8 +44,6 @@ function App() {
                   <Route path="contactus" element={<div>Contact Us</div>} />
                   <Route path="*" element={<div>Not Found</div>} />
                 </Route>
-                <Route path="products" element={<Products />} />
-                <Route path="/products/:id" element={<ProductDetails />} />
               </Route>
               <Route path="*" element={<div>Not Found</div>} />
             </Routes>
