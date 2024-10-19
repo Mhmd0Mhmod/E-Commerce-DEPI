@@ -6,11 +6,13 @@ import useAuthUser from 'react-auth-kit/hooks/useAuthUser';
 import { useAuth } from '../Context/AuthProvider';
 import useSignOut from 'react-auth-kit/hooks/useSignOut';
 import toast from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
 
 function ProfileMenu() {
   const user = useAuthUser();
   const { isAuthenticated, setIsAuthenticated } = useAuth();
   const signOut = useSignOut();
+  const navigate = useNavigate();
   const handleLogout = () => {
     signOut();
     setIsAuthenticated(false);
@@ -19,11 +21,11 @@ function ProfileMenu() {
 
   return (
     <div className="space-y-4">
-      <ProfileMenuItem icon={<FaRegCircleUser />}>
+      <ProfileMenuItem icon={<FaRegCircleUser />} onClick={() => navigate('/account')}>
         <p className="text-primary-main text-lg ">{user.name}</p>
         <p className="text-sm">{user.email}</p>
       </ProfileMenuItem>
-      <ProfileMenuItem icon={<BsHandbag />}>Orders </ProfileMenuItem>
+
       <ProfileMenuItem icon={<HiOutlineLogin />} onClick={handleLogout} className={'text-red-500'}>
         log out{' '}
       </ProfileMenuItem>
