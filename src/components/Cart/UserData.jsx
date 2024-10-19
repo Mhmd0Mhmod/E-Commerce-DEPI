@@ -1,9 +1,8 @@
 import { useForm } from 'react-hook-form';
-import Button from '../Button';
-import { useCart } from './Cart';
-import Input from '../Input';
-import { FaRegEdit } from 'react-icons/fa';
 import { useCheckOut } from '../../features/order/useCheckOut';
+import Button from '../Button';
+import Input from '../Input';
+import { useCart } from './Cart';
 function UserData() {
   const { setStep } = useCart();
   const { register, handleSubmit, formState } = useForm();
