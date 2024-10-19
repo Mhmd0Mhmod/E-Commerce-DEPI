@@ -24,7 +24,7 @@ function CartOrder({ order, type }) {
             <span className="font-bold">${order.price}</span>
           </div>
 
-          <CounterItem product={order.product.id} id={order.product.id} count={order.quantity} />
+          <CounterItem product={order.id} id={order.product.id} count={order.quantity} />
         </div>
       </div>
     </div>

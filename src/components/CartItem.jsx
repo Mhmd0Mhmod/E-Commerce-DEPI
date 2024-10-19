@@ -12,7 +12,7 @@ function CartItem({ product }) {
         <p className="text-sm text-gray-717171">×{product.quantity}</p>
         <div className="flex items-center justify-between">
           <span className="text-gray-2D2D2D font-light">${product.price * product.quantity}</span>
-          <CounterItem id={product.product.id} product={product.product.id} count={product.quantity} />
+          <CounterItem id={product.id} product={product.product.id} count={product.quantity} />
         </div>
       </div>
     </li>

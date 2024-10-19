@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
-function HomeCategriesItem({ image, title }) {
+function HomeCategriesItem({ image, title, onClick }) {
   return (
-    <div className="flex  w-full flex-col items-center shadow-xl rounded-lg px-4 py-2 cursor-pointer">
+    <div className="flex  w-full flex-col items-center shadow-xl rounded-lg px-4 py-2 cursor-pointer" onClick={onClick}>
       <div className=" h-16">
         <img className=" h-full aspect-square" src={image} alt="" />
       </div>
