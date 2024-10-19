@@ -10,7 +10,10 @@ import Cart from './components/Cart/Cart';
 import Products from './components/Products';
 import ProductDetails from './components/ProductDetails';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-
+import AuthProvider from 'react-auth-kit';
+import { Toaster } from 'react-hot-toast';
+import { store } from './apis/auth';
+import { AuthProvider as CustomAuthProvider } from './Context/AuthProvider.jsx';
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
@@ -22,27 +25,32 @@ const queryClient = new QueryClient({
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
-      <BrowserRouter>
-        <Routes>
-          <Route element={<AppLayout />}>
-            <Route index element={<Navigate replace to={'home'} />} />
-            <Route index path="home" element={<Home />} />
-            <Route index path="cart" element={<Cart />} />
-            <Route path="account" element={<Account />}>
-              <Route index element={<Navigate replace to={'personalData'} />} />
-              <Route path="personalData" element={<PersonalData />} />
-              <Route path="orders" element={<Orders />} />
-              <Route path="wishlist" element={<WishList />} />
-              <Route path="security" element={<AccountSecurity />} />
-              <Route path="contactus" element={<div>Contact Us</div>} />
+      <AuthProvider store={store}>
+        <CustomAuthProvider>
+          <BrowserRouter>
+            <Routes>
+              <Route element={<AppLayout />}>
+                <Route index element={<Navigate replace to={'home'} />} />
+                <Route index path="home" element={<Home />} />
+                <Route path="products" element={<Products />} />
+                <Route path="/products/:id" element={<ProductDetails />} />
+                <Route index path="cart" element={<Cart />} />
+                <Route path="account" element={<Account />}>
+                  <Route index element={<Navigate replace to={'personalData'} />} />
+                  <Route path="personalData" element={<PersonalData />} />
+                  <Route path="orders" element={<Orders />} />
+                  <Route path="wishlist" element={<WishList />} />
+                  <Route path="security" element={<AccountSecurity />} />
+                  <Route path="contactus" element={<div>Contact Us</div>} />
+                  <Route path="*" element={<div>Not Found</div>} />
+                </Route>
+              </Route>
               <Route path="*" element={<div>Not Found</div>} />
-            </Route>
-            <Route path="products" element={<Products />} />
-            <Route path="/products/:id" element={<ProductDetails />} />
-          </Route>
-          <Route path="*" element={<div>Not Found</div>} />
-        </Routes>
-      </BrowserRouter>
+            </Routes>
+          </BrowserRouter>
+        </CustomAuthProvider>
+      </AuthProvider>
+      <Toaster />
     </QueryClientProvider>
   );
 }

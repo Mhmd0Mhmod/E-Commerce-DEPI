@@ -1,7 +1,9 @@
 import { Outlet } from 'react-router-dom';
 import Breadcrumb from '../components/BreadCrumb';
 import AccountAside from '../components/AccountAside';
-
+import useAuthUser from 'react-auth-kit/hooks/useAuthUser';
+import Cookies from 'js-cookie';
+import useAuthHeader from 'react-auth-kit/hooks/useAuthHeader';
 function Account() {
   return (
     <div className="p-4 space-y-4 min-h-[90lvh]">
