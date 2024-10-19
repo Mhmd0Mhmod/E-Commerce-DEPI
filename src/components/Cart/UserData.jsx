@@ -3,9 +3,14 @@ import { useCheckOut } from '../../features/order/useCheckOut';
 import Button from '../Button';
 import Input from '../Input';
 import { useCart } from './Cart';
+
+import useAuthUser from 'react-auth-kit/hooks/useAuthUser';
+
 function UserData() {
   const { setStep } = useCart();
   const { register, handleSubmit, formState } = useForm();
+  const user = useAuthUser();
+
   const { errors } = formState;
   const { checkOut, isPending } = useCheckOut();
   function submit(data) {

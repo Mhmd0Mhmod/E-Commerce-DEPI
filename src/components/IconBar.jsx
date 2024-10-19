@@ -25,6 +25,23 @@ function IconBar() {
     setIsAuthenticated(false);
     toast.success('Sign out successfully');
   }
+  if (!isAuthenticated) {
+    return (
+      <ul className="flex items-center space-x-2 sm:space-x-4 text-xl order-3">
+        <Modal>
+          <Modal.Open opens="loginForm">
+            <Button className={'bg-primary-main px-4 py-2 hidden gap-5 items-center text-white cursor-pointer rounded-lg md:flex'}>
+              {' '}
+              <IoLogOutOutline /> log in{' '}
+            </Button>
+          </Modal.Open>
+          <Modal.Window name="loginForm">
+            <LoginSignContainer />
+          </Modal.Window>
+        </Modal>
+      </ul>
+    );
+  }
   return (
     <ul className="flex items-center space-x-2 sm:space-x-4 text-xl order-3">
       <Modal>
@@ -58,24 +75,6 @@ function IconBar() {
           <ProfileMenu />
         </SmallModal.Window>
       </SmallModal>
-      {!isAuthenticated && (
-        <Modal>
-          <Modal.Open opens="loginForm">
-            <Button className={'bg-primary-main px-4 py-2 hidden gap-5 items-center text-white cursor-pointer rounded-lg md:flex'}>
-              {' '}
-              <IoLogOutOutline /> log in{' '}
-            </Button>
-          </Modal.Open>
-          <Modal.Window name="loginForm">
-            <LoginSignContainer />
-          </Modal.Window>
-        </Modal>
-      )}
-      {isAuthenticated && (
-        <Button className={'bg-primary-main px-4 py-2 hidden gap-5 items-center text-white cursor-pointer rounded-lg md:flex'} onClick={handleSigOut}>
-          <IoLogOutOutline /> log out
-        </Button>
-      )}
     </ul>
   );
 }
