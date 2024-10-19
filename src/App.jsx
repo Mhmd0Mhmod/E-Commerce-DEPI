@@ -35,7 +35,15 @@ function App() {
                 <Route index path="home" element={<Home />} />
                 <Route path="products" element={<Products />} />
                 <Route path="/products/:id" element={<ProductDetails />} />
-                <Route index path="cart" element={<Cart />} />
+                <Route
+                  index
+                  path="cart"
+                  element={
+                    <PrivateRoute>
+                      <Cart />
+                    </PrivateRoute>
+                  }
+                />
                 <Route
                   path="account"
                   element={
