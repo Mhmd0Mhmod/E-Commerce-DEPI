@@ -1,6 +1,6 @@
 export async function getProducts() {
   try {
-    let res = await fetch('https://kartak-gzj5.onrender.com/api/products');
+    let res = await fetch('https://gcm.onrender.com/api/products');
     let data = await res.json();
 
     return data;

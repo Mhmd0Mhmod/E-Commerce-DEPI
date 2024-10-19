@@ -16,11 +16,11 @@ function Home() {
       <HomeSection label="New Products">
         <NewProducts />
       </HomeSection>
-      <HomeSection label="Best Sellers">
-        <NewProducts />
-      </HomeSection>
       <HomeSection label="Top Brands">
         <TopBrands />
+      </HomeSection>
+      <HomeSection label="Best Sellers">
+        <NewProducts />
       </HomeSection>
       <SmartWatchSection />
     </div>

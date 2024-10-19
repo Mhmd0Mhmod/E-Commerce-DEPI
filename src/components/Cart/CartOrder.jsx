@@ -1,14 +1,13 @@
 import CounterItem from '../CounterItem';
 
 function CartOrder({ order, type }) {
-  const color = `bg-${order.color}-500`;
   return (
     <div className={`flex  gap-5 py-6 px-4 border shadow-md  ${type == 'inOrders' ? 'text-sm text-gray-500' : ''}`}>
       <div className="w-1/4">
-        <img src="public/CategriesPhotos/laptop.png" className="max-w-full" />
+        <img src={order.product.image} className="max-w-full" />
       </div>
       <div className={`${type == 'norma' ? 'space-y-5' : ''} w-full`}>
-        <h1 className="text-xl">{order.name}</h1>
+        <h1 className="text-xl font-bold">{order.product.name}</h1>
         <div className="flex items-center gap-3"></div>
 
         <div className="flex items-center gap-3">
@@ -20,13 +19,12 @@ function CartOrder({ order, type }) {
           {type === 'normal' && <img src="public/Cart/StockIcon.svg" alt="Stock" />}
           <span>{order.stock ? 'In Stock' : 'Out of Stock'}</span>
         </div>
-        <div className="flex justify-between">
-          <div className={`space-x-3 ${type === 'inOrders' ? 'ml-auto' : ''}`}>
-            <del className="text-gray-500">${order.price}</del>
-            <span className="font-bold">${order.priceAfterDiscount}</span>
+        <div className="flex justify-between items-center">
+          <div className={`space-x-3 ${type === 'inOrders' ? '' : ''}`}>
+            <span className="font-bold">${order.price}</span>
           </div>
 
-          <CounterItem id={order['_id']} count={order.quantity} />
+          <CounterItem product={order.product.id} id={order.product.id} count={order.quantity} />
         </div>
       </div>
     </div>

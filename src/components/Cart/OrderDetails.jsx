@@ -1,13 +1,14 @@
-import { useSelector } from 'react-redux';
-import { getTotalPrice } from '../../slieces/cartSlice';
+import { useGetCart } from '../../features/cart/useGetCart';
+import Loader from '../Loader';
 
 function OrderDetails() {
-  const totalPrice = useSelector(getTotalPrice);
+  const { cart, isLoading } = useGetCart();
+  if (isLoading) return <Loader />;
   return (
     <>
       <div className="flex justify-between">
         <p>Grand Total</p>
-        <span>${totalPrice}</span>
+        <span>${cart.totalCartPrice}</span>
       </div>
     </>
   );
