@@ -14,6 +14,7 @@ import AuthProvider from 'react-auth-kit';
 import { Toaster } from 'react-hot-toast';
 import { store } from './apis/auth';
 import { AuthProvider as CustomAuthProvider } from './Context/AuthProvider.jsx';
+import PrivateRoute from './Context/PrivateRoutes.jsx';
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
@@ -35,7 +36,14 @@ function App() {
                 <Route path="products" element={<Products />} />
                 <Route path="/products/:id" element={<ProductDetails />} />
                 <Route index path="cart" element={<Cart />} />
-                <Route path="account" element={<Account />}>
+                <Route
+                  path="account"
+                  element={
+                    <PrivateRoute>
+                      <Account />
+                    </PrivateRoute>
+                  }
+                >
                   <Route index element={<Navigate replace to={'personalData'} />} />
                   <Route path="personalData" element={<PersonalData />} />
                   <Route path="orders" element={<Orders />} />

@@ -1,24 +1,24 @@
 import { useForm } from 'react-hook-form';
 import Button from '../Button';
 import { useCart } from './Cart';
-import Input from '../Input';
 import { FaRegEdit } from 'react-icons/fa';
+import useAuthUser from 'react-auth-kit/hooks/useAuthUser';
 function UserData() {
   const { setStep } = useCart();
   const { register, handleSubmit, formState } = useForm();
-
+  const user = useAuthUser();
   return (
     <>
       <div className="flex  gap-5 py-6 px-4 border shadow-md rounded-md">
         <form onSubmit={handleSubmit()} className="w-full space-y-4">
           <div>
             <h2 className="text-2xl font-semibold">User</h2>
-            <input type="text" className="p-2 w-full bg-gray-100 focus:outline-none" {...register('name')} />
+            <input type="text" className="p-2 w-full bg-gray-100 focus:outline-none" {...register('name', { value: user.name })} />
           </div>
           <div>
             <h2 className="text-2xl font-semibold">Ship to</h2>
             <div className="flex items-center p-4 bg-gray-100  rounded-xl text-2xl">
-              <input type="text" className="p-2 w-full bg-gray-100 focus:outline-none" {...register('shipTo')} />
+              <input type="text" className="p-2 w-full bg-gray-100 focus:outline-none" {...register('shipTo', { value: user.shipTo })} />
               <FaRegEdit className="text-blue-500" />
             </div>
           </div>
