@@ -10,17 +10,21 @@ import Button from './Button';
 import LoginSignContainer from './LoginSignContainer';
 import { IoLogOutOutline } from 'react-icons/io5';
 import useAuthUser from 'react-auth-kit/hooks/useAuthUser';
-import { useEffect, useState } from 'react';
-import useAuthHeader from 'react-auth-kit/hooks/useAuthHeader';
+import useIsAuthenticated from 'react-auth-kit/hooks/useIsAuthenticated';
+import useSignOut from 'react-auth-kit/hooks/useSignOut';
+import { useEffect } from 'react';
+import { useAuth } from '../Context/AuthProvider';
+import toast from 'react-hot-toast';
 
 function IconBar() {
   const user = useAuthUser();
-  console.log(useAuthHeader());
-
-  const [registered, setRegistered] = useState(false);
-  useEffect(() => {
-    if (user) setRegistered(true);
-  }, [user]);
+  const signOut = useSignOut();
+  const { isAuthenticated, setIsAuthenticated } = useAuth();
+  function handleSigOut() {
+    signOut();
+    setIsAuthenticated(false);
+    toast.success('Sign out successfully');
+  }
   return (
     <ul className="flex items-center space-x-2 sm:space-x-4 text-xl order-3">
       <Modal>
@@ -54,10 +58,10 @@ function IconBar() {
           <ProfileMenu />
         </SmallModal.Window>
       </SmallModal>
-      {!registered && (
+      {!isAuthenticated && (
         <Modal>
           <Modal.Open opens="loginForm">
-            <Button className={'bg-primary-main px-4 py-2 hidden justify-center items-center text-white cursor-pointer rounded-lg md:flex'}>
+            <Button className={'bg-primary-main px-4 py-2 hidden gap-5 items-center text-white cursor-pointer rounded-lg md:flex'}>
               {' '}
               <IoLogOutOutline /> log in{' '}
             </Button>
@@ -66,6 +70,11 @@ function IconBar() {
             <LoginSignContainer />
           </Modal.Window>
         </Modal>
+      )}
+      {isAuthenticated && (
+        <Button className={'bg-primary-main px-4 py-2 hidden gap-5 items-center text-white cursor-pointer rounded-lg md:flex'} onClick={handleSigOut}>
+          <IoLogOutOutline /> log out
+        </Button>
       )}
     </ul>
   );

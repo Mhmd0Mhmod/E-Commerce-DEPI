@@ -7,22 +7,23 @@ import { login } from '../apis/Registration';
 import useSignIn from 'react-auth-kit/hooks/useSignIn';
 import toast from 'react-hot-toast';
 import { useState } from 'react';
+import { Navigate, redirect, useNavigate } from 'react-router-dom';
+import { useAuth } from '../Context/AuthProvider';
 function LoginForm({ hidden }) {
   const { register, handleSubmit, formState } = useForm();
   const { errors } = formState;
   const signIn = useSignIn();
   const [loading, setLoading] = useState(false);
+  const { setIsAuthenticated } = useAuth();
   function submit(data) {
     setLoading(true);
     login(data)
       .then((res) => {
         if (res) {
-          console.log(res);
-
           const signInResult = signIn({
             auth: {
               token: res.token,
-              type: 'Bearer',
+              // type: 'Bearer',
             },
             refresh: res?.refreshToken,
             userState: res.user,
@@ -30,7 +31,7 @@ function LoginForm({ hidden }) {
 
           if (signInResult) {
             toast.success('Login Successfully');
-            console.log('Sign-in successful');
+            setIsAuthenticated(true);
           } else {
             console.error('Sign-in failed');
           }

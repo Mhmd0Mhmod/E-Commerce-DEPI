@@ -7,7 +7,6 @@ import useAuthHeader from 'react-auth-kit/hooks/useAuthHeader';
 function Account() {
   const user = useAuthUser();
   const header = useAuthHeader();
-  console.log(user, header);
 
   return (
     <div className="p-4 space-y-4 min-h-[90lvh]">

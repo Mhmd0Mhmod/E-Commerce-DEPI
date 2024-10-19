@@ -21,7 +21,6 @@ function ProductsContainer() {
       return product.subcategory.name === filterValue;
     });
   }
-  console.log(filterProducts);
 
   // const filterValue
   return (

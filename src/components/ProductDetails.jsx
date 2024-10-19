@@ -10,7 +10,6 @@ const ProductDetail = () => {
   const { product, isLoading } = useProduct();
 
   if (isLoading) return null;
-  console.log(product.product);
 
   return (
     <div className="grid grid-cols-[0.7fr_1fr_1fr] justify-center gap-10 my-8">
