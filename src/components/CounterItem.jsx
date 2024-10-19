@@ -11,7 +11,7 @@ function CounterItem({ count, id, product }) {
   if (isPendingRemove || isPendingEdit) return <Loader />;
   return (
     <div className="flex items-center gap-2 ">
-      <MdDeleteForever onClick={() => removeFromCart(id)} className="text-status-error text-2xl" />
+      <MdDeleteForever onClick={() => removeFromCart(id)} className="text-status-error text-2xl cursor-pointer" />
       <div className="flex items-center gap-2 px-[6px] py-1 text-gray-717171 border-b-2 border-gray-717171">
         <button onClick={() => editInCart({ product, quantity: count - 1 })}>
           <GoDash className="text-xl" />
