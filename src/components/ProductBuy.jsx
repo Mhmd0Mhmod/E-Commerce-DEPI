@@ -9,7 +9,8 @@ import { useEffect, useRef } from 'react';
 function ProductBuy({ discount, priceAfterDiscount, price, product }) {
   const dispatch = useDispatch();
   const cart = useSelector(getCartItems);
-  const { addToCart } = useAddCart();
+  const { addToCart, isPending } = useAddCart();
+  console.log(isPending);
 
   const isProductInCart = Boolean(cart.find((item) => product['_id'] === item['_id']));
   return (
@@ -37,11 +38,12 @@ function ProductBuy({ discount, priceAfterDiscount, price, product }) {
         </Button>
       ) : (
         <Button
+          disabled={isPending}
           onClick={() => {
             addToCart({ product: product['_id'] });
             // dispatch(addItem(product));
           }}
-          className={'w-full  rounded-lg text-white bg-primary-main px-4 py-2'}
+          className={`w-full  rounded-lg text-white  px-4 py-2  bg-primary-main disabled:bg-gray-505050 disabled:cursor-not-allowed`}
         >
           Add to Cart
         </Button>

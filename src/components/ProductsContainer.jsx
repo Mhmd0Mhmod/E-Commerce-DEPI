@@ -3,13 +3,14 @@ import { getCartItems } from '../slieces/cartSlice';
 import ItemProduct from './ItemProduct';
 import { useProducts } from '../features/products/useProducts';
 import { useSearchParams } from 'react-router-dom';
+import Loader from './Loader';
 
 function ProductsContainer() {
   const { products, isLoading } = useProducts();
 
   const [searchParams] = useSearchParams();
 
-  if (isLoading) return null;
+  if (isLoading) return <Loader />;
 
   const filterValue = searchParams.get('filter') ?? 'all';
 

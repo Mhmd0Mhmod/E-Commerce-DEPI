@@ -5,17 +5,22 @@ import Input from '../Input';
 import { useCart } from './Cart';
 
 import useAuthUser from 'react-auth-kit/hooks/useAuthUser';
+import { useGetCart } from '../../features/cart/useGetCart';
+import Loader from '../Loader';
 
 function UserData() {
   const { setStep } = useCart();
+  const { cart, isLoading } = useGetCart();
+
   const { register, handleSubmit, formState } = useForm();
   const user = useAuthUser();
 
   const { errors } = formState;
   const { checkOut, isPending } = useCheckOut();
   function submit(data) {
-    checkOut(data);
+    checkOut({ shippingAddress: data, cartId: cart['_id'] });
   }
+  if (isLoading) return <Loader />;
   return (
     <>
       <div className="flex  gap-5 py-6 px-4 border shadow-md rounded-md">

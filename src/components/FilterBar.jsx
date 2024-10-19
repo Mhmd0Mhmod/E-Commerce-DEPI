@@ -18,7 +18,7 @@ function FilterBar() {
   return (
     <div className="flex justify-center items-center gap-8">
       <FilterBarItem icon={<></>} title="all" onClick={() => handleChangeFilter('all')} />
-      <FilterBarItem icon={<SlScreenSmartphone />} title="phone" onClick={() => handleChangeFilter('phone')} />
+      <FilterBarItem icon={<SlScreenSmartphone />} title="phone" onClick={() => handleChangeFilter('phones')} />
       <FilterBarItem icon={<BsLaptop />} title="Laptops" onClick={() => handleChangeFilter('Laptops')} />
       <FilterBarItem icon={<BsTabletLandscape />} title="tablet" onClick={() => handleChangeFilter('tablet')} />
     </div>

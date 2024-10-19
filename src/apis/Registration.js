@@ -11,6 +11,7 @@ export async function login(bodyData) {
 }
 
 export async function signUp(bodyData) {
+  console.log(bodyData);
   try {
     const { data } = await axios.post(`${import.meta.env.VITE_API_URL}/auth/signup`, bodyData);
     return data;

@@ -1,39 +1,43 @@
 import axios from 'axios';
 
 export async function getCart() {
-  const data = await axios.get('https://gcm.onrender.com/api/carts', {
+  const token = document.cookie.split('=').at(1).split(';').at(0);
+  const data = await axios.get(`${import.meta.env.VITE_API_URL}/carts`, {
     headers: {
-      Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NzEzMDdlNWYwYWFmYzU5ZGNmNmJiYTIiLCJuYW1lIjoibW9oYW1tZWQiLCJyb2xlIjoidXNlciIsImlhdCI6MTcyOTMwMjE4OX0.kS12xJhj0NhD29xlM0P_IK5io0Zp5B3PIs68SKI9w5o`,
+      Authorization: `Bearer ${token}`,
     },
   });
 
   return data.data.cart;
 }
 export async function addToCart(product) {
-  const data = await axios.post('https://gcm.onrender.com/api/carts', product, {
+  const token = document.cookie.split('=').at(1).split(';').at(0);
+  const data = await axios.post(`${import.meta.env.VITE_API_URL}/carts`, product, {
     headers: {
-      Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NzEzMDdlNWYwYWFmYzU5ZGNmNmJiYTIiLCJuYW1lIjoibW9oYW1tZWQiLCJyb2xlIjoidXNlciIsImlhdCI6MTcyOTMwMjE4OX0.kS12xJhj0NhD29xlM0P_IK5io0Zp5B3PIs68SKI9w5o`,
+      Authorization: `Bearer ${token}`,
     },
   });
 
   return data;
 }
 export async function removeFromCart(id) {
-  const data = await axios.delete(`https://gcm.onrender.com/api/carts/${id}`, {
+  const token = document.cookie.split('=').at(1).split(';').at(0);
+  const data = await axios.delete(`${import.meta.env.VITE_API_URL}/carts/${id}`, {
     headers: {
-      Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NzEzMDdlNWYwYWFmYzU5ZGNmNmJiYTIiLCJuYW1lIjoibW9oYW1tZWQiLCJyb2xlIjoidXNlciIsImlhdCI6MTcyOTMwMjE4OX0.kS12xJhj0NhD29xlM0P_IK5io0Zp5B3PIs68SKI9w5o`,
+      Authorization: `Bearer ${token}`,
     },
   });
 
   return data;
 }
 export async function updateProductInCart({ product, quantity }) {
+  const token = document.cookie.split('=').at(1).split(';').at(0);
   const data = await axios.put(
-    `https://gcm.onrender.com/api/carts/${product}`,
+    `${import.meta.env.VITE_API_URL}/carts/${product}`,
     { quantity },
     {
       headers: {
-        Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NzEzMDdlNWYwYWFmYzU5ZGNmNmJiYTIiLCJuYW1lIjoibW9oYW1tZWQiLCJyb2xlIjoidXNlciIsImlhdCI6MTcyOTMwMjE4OX0.kS12xJhj0NhD29xlM0P_IK5io0Zp5B3PIs68SKI9w5o`,
+        Authorization: `Bearer ${token}`,
       },
     }
   );
@@ -41,12 +45,13 @@ export async function updateProductInCart({ product, quantity }) {
   return data;
 }
 export async function clearCart() {
+  const token = document.cookie.split('=').at(1).split(';').at(0);
   const data = await axios.delete(
-    `https://gcm.onrender.com/api/carts`,
+    `${import.meta.env.VITE_API_URL}/carts`,
 
     {
       headers: {
-        Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NzEzMDdlNWYwYWFmYzU5ZGNmNmJiYTIiLCJuYW1lIjoibW9oYW1tZWQiLCJyb2xlIjoidXNlciIsImlhdCI6MTcyOTMwMjE4OX0.kS12xJhj0NhD29xlM0P_IK5io0Zp5B3PIs68SKI9w5o`,
+        Authorization: `Bearer ${token}`,
       },
     }
   );

@@ -9,7 +9,7 @@ import Loader from './Loader';
 function CartContainer() {
   // const cart = useSelector(getCartItems);
   const { cart, isLoading } = useGetCart();
-
+  console.log(cart);
   if (isLoading) return <Loader />;
   return (
     <div className=" w-[500px]">
